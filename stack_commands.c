@@ -15,7 +15,7 @@ void op_push(stack_t **head, unsigned int line_number)
 		int_val = atoi(val);
 	else
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		printf("L%d: usage: push integer\n", line_number);
 		if (*head)
 			free_dlistint(*head);
 		exit(EXIT_FAILURE);
@@ -52,7 +52,7 @@ void op_pint(stack_t **head, unsigned int line_number)
 
 	if (*head == NULL)
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		printf("L%d: can't pint, stack empty\n", line_number);
 		if (*head)
 			free_dlistint(*head);
 		exit(EXIT_FAILURE);
@@ -69,7 +69,7 @@ void op_pop(stack_t **head, unsigned int line_number)
 {
 	if (*head == NULL)
 	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		printf("L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	delete_dnodeint_at_index(head, 0);
