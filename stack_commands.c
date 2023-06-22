@@ -15,7 +15,7 @@ void op_push(stack_t **head, unsigned int line_number)
 		int_val = atoi(val);
 	else
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		if (*head)
 			free_dlistint(*head);
 		exit(EXIT_FAILURE);
@@ -53,7 +53,7 @@ void op_pint(stack_t **head, unsigned int line_number)
 
 	if (*head == NULL)
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		if (*head)
 			free_dlistint(*head);
 		exit(EXIT_FAILURE);
@@ -70,8 +70,30 @@ void op_pop(stack_t **head, unsigned int line_number)
 {
 	if (*head == NULL)
 	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	delete_dnodeint_at_index(head, 0);
+}
+
+/**
+ * op_swap - swaos node
+ * @head: head of stack
+ * @line_number: number to insert val
+ */
+void op_swap(stack_t **head, unsigned int line_number)
+{
+	stack_t *ptr = *head;
+	int num;
+
+	if (ptr == NULL || ptr->next == NULL)
+	{
+		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		if (*head)
+			free_dlistint(*head);
+		exit(EXIT_FAILURE);
+	}
+	num = ptr->n;
+	ptr->n = ptr->next->n;
+	ptr->next->n = num;
 }
