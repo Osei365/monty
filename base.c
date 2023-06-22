@@ -12,7 +12,7 @@ int main(int ac, char *av[])
 	head = NULL;
 	if (ac != 2)
 	{
-		printf("USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		if (head)
 			free_dlistint(head);
 		exit(EXIT_FAILURE);
