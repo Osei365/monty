@@ -20,7 +20,8 @@ void op_push(stack_t **head, unsigned int line_number)
 			free_dlistint(*head);
 		exit(EXIT_FAILURE);
 	}
-	add_dnodeint(head, int_val);
+	if (flag == 0)
+		add_dnodeint(head, int_val);
 }
 
 /**

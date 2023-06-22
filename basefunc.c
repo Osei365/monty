@@ -12,7 +12,7 @@ void parse_file(char *filename, stack_t **head)
 	char *cmd;
 	size_t bufsize = 32;
 	int nchars, flc;
-	unsigned int count;
+	unsigned int count = 1;
 	void (*func)(stack_t **, unsigned int);
 	FILE *fl = fopen(filename, "r");
 
