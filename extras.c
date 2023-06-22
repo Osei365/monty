@@ -8,6 +8,8 @@ int check_num(char *val)
 {
 	int a = 0;
 
+	if (val == NULL)
+		return (0);
 	while (val[a])
 	{
 		if (val[a] == '-')
