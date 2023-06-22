@@ -5,7 +5,7 @@
  * @n: data to be added
  * Return: nothing
  */
-void add_dnodeint(stack_t **head, const int n)
+void add_dnodeint(stack_t **head, int n)
 {
 	stack_t *new;
 
