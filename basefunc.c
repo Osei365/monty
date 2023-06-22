@@ -18,7 +18,7 @@ void parse_file(char *filename, stack_t **head)
 
 	if (fl == NULL)
 	{
-		printf("Error: Can't open file %s\n", filename);
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		if (*head)
 			free_dlistint(*head);
 		exit(EXIT_FAILURE);
@@ -34,7 +34,7 @@ void parse_file(char *filename, stack_t **head)
 		func = get_op_func(cmd);
 		if (func == NULL)
 		{
-			printf("L%d: unknown instruction %s\n", count, cmd);
+			fprintf(stderr, "L%d: unknown instruction %s\n", count, cmd);
 			if (*head)
 				free_dlistint(*head);
 			exit(EXIT_FAILURE);
