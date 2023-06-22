@@ -11,7 +11,7 @@ void op_push(stack_t **head, unsigned int line_number)
 	char *val;
 
 	val = strtok(NULL, "\n ");
-	if (val || check_num(val) == 1)
+	if (val && check_num(val) == 1)
 		int_val = atoi(val);
 	else
 	{
