@@ -21,7 +21,14 @@ void op_push(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	if (flag == 0)
-		add_dnodeint(head, int_val);
+	{
+		tmp = (*head)->next;
+		new->prev = *head;
+		new->next = tmp;
+		if (tmp)
+			tmp->prev = new;
+		(*head)->next = new;
+	}
 }
 
 /**
