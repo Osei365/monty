@@ -19,5 +19,6 @@ int main(int ac, char *av[])
 		exit(EXIT_FAILURE);
 	}
 	parse_file(av[1], &head);
+	free_dlistint(head);
 	return (0);
 }
