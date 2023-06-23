@@ -16,8 +16,6 @@ void parse_file(char *filename, stack_t **head)
 	void (*func)(stack_t **, unsigned int);
 	FILE *fl = fopen(filename, "r");
 
-	if (stack_init(head) == EXIT_FAILURE)
-		exit(EXIT_FAILURE);
 	if (fl == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);

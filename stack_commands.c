@@ -9,16 +9,6 @@ void op_push(stack_t **head, unsigned int line_number)
 {
 	int int_val;
 	char *val;
-	stack_t *new, *tmp;
-
-	new = malloc(sizeof(stack_t));
-	if (new == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		if (*head)
-			free_dlistint(*head);
-		exit(EXIT_FAILURE);
-	}
 
 	val = strtok(NULL, "\n ");
 	if (val && check_num(val) == 1)
@@ -30,16 +20,8 @@ void op_push(stack_t **head, unsigned int line_number)
 			free_dlistint(*head);
 		exit(EXIT_FAILURE);
 	}
-	new->n = int_val;
-	if ((*head)->n == 0)
-	{
-		tmp = (*head)->next;
-		new->prev = *head;
-		new->next = tmp;
-		if (tmp)
-			tmp->prev = new;
-		(*head)->next = new;
-	}
+	if (flag == 0)
+		add_dnodeint(head, int_val);
 }
 
 /**
@@ -50,7 +32,7 @@ void op_push(stack_t **head, unsigned int line_number)
  */
 void op_pall(stack_t **head, unsigned int line_number)
 {
-	stack_t *twin = (*head)->next;
+	stack_t *twin = *head;
 
 	(void)line_number;
 	while (twin)
@@ -69,7 +51,7 @@ void op_pint(stack_t **head, unsigned int line_number)
 {
 	stack_t *twin = *head;
 
-	if ((*head)->next == NULL)
+	if (*head == NULL)
 	{
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		if (*head)
@@ -91,7 +73,7 @@ void op_pop(stack_t **head, unsigned int line_number)
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	delete_dnodeint_at_index(head, 1);
+	delete_dnodeint_at_index(head, 0);
 }
 
 /**
@@ -101,7 +83,7 @@ void op_pop(stack_t **head, unsigned int line_number)
  */
 void op_swap(stack_t **head, unsigned int line_number)
 {
-	stack_t *ptr = (*head)->next;
+	stack_t *ptr = *head;
 	int num;
 
 	if (ptr == NULL || ptr->next == NULL)

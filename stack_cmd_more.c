@@ -6,7 +6,7 @@
  */
 void op_add(stack_t **head, unsigned int line_number)
 {
-	stack_t *twin = (*head)->next, *ptr;
+	stack_t *twin = *head, *ptr;
 	int num;
 
 	if (twin == NULL || twin->next == NULL)
@@ -19,7 +19,7 @@ void op_add(stack_t **head, unsigned int line_number)
 	ptr = twin->next;
 	num = twin->n + ptr->n;
 	ptr->n = num;
-	delete_dnodeint_at_index(head, 1);
+	delete_dnodeint_at_index(head, 0);
 }
 
 /**
@@ -31,8 +31,6 @@ void op_nop(stack_t **head, unsigned int line_number)
 {
 	(void)head;
 	(void)line_number;
-
-	;
 }
 
 /**
@@ -42,7 +40,7 @@ void op_nop(stack_t **head, unsigned int line_number)
  */
 void op_sub(stack_t **head, unsigned int line_number)
 {
-	stack_t *twin = (*head)->next;
+	stack_t *twin = *head;
 
 	if (twin == NULL || twin->next == NULL)
 	{
@@ -52,7 +50,7 @@ void op_sub(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	twin->next->n -= twin->n;
-	delete_dnodeint_at_index(head, 1);
+	delete_dnodeint_at_index(head, 0);
 }
 
 /**
@@ -62,7 +60,7 @@ void op_sub(stack_t **head, unsigned int line_number)
  */
 void op_div(stack_t **head, unsigned int line_number)
 {
-	stack_t *twin = (*head)->next;
+	stack_t *twin = *head;
 
 	if (twin == NULL || twin->next == NULL)
 	{
@@ -79,7 +77,7 @@ void op_div(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	twin->next->n /= twin->n;
-	delete_dnodeint_at_index(head, 1);
+	delete_dnodeint_at_index(head, 0);
 }
 
 /**
@@ -89,7 +87,7 @@ void op_div(stack_t **head, unsigned int line_number)
  */
 void op_mul(stack_t **head, unsigned int line_number)
 {
-	stack_t *twin = (*head)->next;
+	stack_t *twin = *head;
 
 	if (twin == NULL || twin->next == NULL)
 	{
@@ -99,5 +97,5 @@ void op_mul(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	twin->next->n *= twin->n;
-	delete_dnodeint_at_index(head, 1);
+	delete_dnodeint_at_index(head, 0);
 }
