@@ -37,14 +37,14 @@ void op_pchar(stack_t **head, unsigned int line_number)
 
 	if (temp == NULL)
 	{
-		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
+		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
 		if (*head)
 			free_dlistint(*head);
 		exit(EXIT_FAILURE);
 	}
 	if (temp->n < 0 || temp->n > 127)
 	{
-		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
+		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
 		if (*head)
 			free_dlistint(*head);
 		exit(EXIT_FAILURE);
