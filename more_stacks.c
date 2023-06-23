@@ -70,3 +70,25 @@ void op_pstr(stack_t **head, unsigned int line_number)
 
 	printf("\n");
 }
+
+/**
+  * op_rotl - rotates the stack
+  * @head: head of stack
+  * @line_number - line number
+  */
+void op_rotl(stack_t **head, unsigned int line_number)
+{
+	stack_t *first = *head, *second = (*head)->next;
+	stack_t *bottom = *head;
+
+	(void)line_number;
+	if (first == NULL || second == NULL)
+		return;
+	while (bottom->next)
+		bottom = bottom->next;
+	bottom->next = first;
+	first->prev = bottom;
+	second->prev = NULL;
+	first->next = NULL;
+	*head = second;
+}

@@ -39,7 +39,7 @@ typedef struct instruction_s
 
 int stack_init(stack_t **head);
 void add_dnodeint(stack_t **head, const int n);
-stack_t *add_dnodeint_end(stack_t **head, const int n);
+void add_dnodeint_end(stack_t **head, const int n);
 void free_dlistint(stack_t *head);
 int delete_dnodeint_at_index(stack_t **head, unsigned int index);
 void parse_file(char *filename, stack_t **head);
@@ -58,5 +58,6 @@ void op_mul(stack_t **head, unsigned int line_number);
 void op_mod(stack_t **head, unsigned int line_number);
 void op_pchar(stack_t **head, unsigned int line_number);
 void op_pstr(stack_t **head, unsigned int line_number);
+void op_rotl(stack_t **head, unsigned int line_number);
 int check_num(char *val);
 #endif

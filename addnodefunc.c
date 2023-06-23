@@ -37,20 +37,25 @@ void add_dnodeint(stack_t **head, int n)
  * @n: data to be added
  * Return: new  node head
  */
-stack_t *add_dnodeint_end(stack_t **head, const int n)
+void add_dnodeint_end(stack_t **head, const int n)
 {
 	stack_t *new, *current = *head;
 
 	new = malloc(sizeof(stack_t));
 	if (!new || !head)
-		return (NULL);
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		if (*head)
+			free_dlistint(*head);
+		exit(EXIT_FAILURE);
+	}
 	new->n = n;
 	new->next = NULL;
 	if (*head == NULL)
 	{
 		new->prev = NULL;
 		*head = new;
-		return (new);
+		return;
 	}
 	while (current->next)
 	{
@@ -59,7 +64,7 @@ stack_t *add_dnodeint_end(stack_t **head, const int n)
 	current->next = new;
 	new->prev = current;
 
-	return (new);
+	return;
 }
 
 /**
