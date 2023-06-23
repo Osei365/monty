@@ -16,6 +16,7 @@ void (*get_op_func(char *cmd))(stack_t **, unsigned int)
 		{"add", op_add},
 		{"nop", op_nop},
 		{"sub", op_sub},
+		{"div", op_div},
 		{NULL, NULL}
 	};
 	while (ops[a].f && strcmp(ops[a].opcode, cmd) != 0)
