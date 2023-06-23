@@ -78,17 +78,17 @@ void op_pstr(stack_t **head, unsigned int line_number)
   */
 void op_rotl(stack_t **head, unsigned int line_number)
 {
-	stack_t *first = *head, *second = (*head)->next;
-	stack_t *bottom = *head;
+	stack_t *first = *head;
+	int num;
 
 	(void)line_number;
-	if (first == NULL || second == NULL)
+	if (*head == NULL || (*head)->next == NULL)
 		return;
-	while (bottom->next)
-		bottom = bottom->next;
-	bottom->next = first;
-	first->prev = bottom;
-	second->prev = NULL;
-	first->next = NULL;
-	*head = second;
+	num = first->n;
+	while (first->next)
+	{
+		first->n = first->next->n;
+		first = first->next;
+	}
+	first->n = num;
 }
