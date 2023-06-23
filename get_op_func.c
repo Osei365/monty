@@ -13,6 +13,7 @@ void (*get_op_func(char *cmd))(stack_t **, unsigned int)
 		{"pint", op_pint},
 		{"pop", op_pop},
 		{"swap", op_swap},
+		{"add", op_add},
 		{NULL, NULL}
 	};
 	while (ops[a].f && strcmp(ops[a].opcode, cmd) != 0)
