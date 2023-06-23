@@ -51,3 +51,22 @@ void op_pchar(stack_t **head, unsigned int line_number)
 	}
 	fprintf(stdout, "%c\n", temp->n);
 }
+
+/**
+ * op_pstr -prints the string starting at the top of the stack
+ * @head: head of stack
+ * @line_number: line number
+ */
+void op_pstr(stack_t **head, unsigned int line_number)
+{
+	stack_t *twin = *head;
+
+	(void)line_number;
+	while (twin && twin->n != 0 && (twin->n > 0 && twin->n <= 127))
+	{
+		printf("%c", twin->n);
+		twin = twin->next;
+	}
+
+	printf("\n");
+}
