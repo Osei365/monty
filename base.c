@@ -1,5 +1,4 @@
 #include "monty.h"
-int flag = 0;
 /**
  * main - Entry point
  * @ac: arg count

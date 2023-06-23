@@ -6,21 +6,23 @@
  */
 void op_mod(stack_t **head, unsigned int line_number)
 {
-	if (*head == NULL || (*head)->next == NULL)
+	stack_t *twin = (*head)->next;
+
+	if (twin == NULL || twin->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't mod, stack too short\n", line_number);
 		if (*head)
 			free_dlistint(*head);
 		exit(EXIT_FAILURE);
 	}
-	if ((*head)->n == 0)
+	if (twin->n == 0)
 	{
 		fprintf(stderr, "L%u: division by zero\n", line_number);
 		if (*head)
 			free_dlistint(*head);
 		exit(EXIT_FAILURE);
 	}
-	(*head)->next->n %= (*head)->n;
+	twin->next->n %= twin->n;
 	delete_dnodeint_at_index(head, 0);
 }
 

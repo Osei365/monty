@@ -6,7 +6,7 @@
  */
 void op_add(stack_t **head, unsigned int line_number)
 {
-	stack_t *twin = *head, *ptr;
+	stack_t *twin = (*head)->next, *ptr;
 	int num;
 
 	if (twin == NULL || twin->next == NULL)
@@ -42,39 +42,43 @@ void op_nop(stack_t **head, unsigned int line_number)
  */
 void op_sub(stack_t **head, unsigned int line_number)
 {
-	if (*head == NULL || (*head)->next == NULL)
+	stack_t *twin = (*head)->next;
+
+	if (twin == NULL || twin->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't sub, stack too short\n", line_number);
 		if (*head)
 			free_dlistint(*head);
 		exit(EXIT_FAILURE);
 	}
-	(*head)->next->n -= (*head)->n;
+	twin->next->n -= twin->n;
 	delete_dnodeint_at_index(head, 0);
 }
 
 /**
  * op_div - divide top two elements in stack
  * @head: head of stack
- * @line_number: line number 
+ * @line_number: line number
  */
 void op_div(stack_t **head, unsigned int line_number)
 {
-	if (*head == NULL || (*head)->next == NULL)
+	stack_t *twin = (*head)->next;
+
+	if (twin == NULL || twin->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't div, stack too short\n", line_number);
 		if (*head)
 			free_dlistint(*head);
 		exit(EXIT_FAILURE);
 	}
-	if ((*head)->n == 0)
+	if (twin->n == 0)
 	{
 		fprintf(stderr, "L%u: division by zero\n", line_number);
 		if (*head)
 			free_dlistint(*head);
 		exit(EXIT_FAILURE);
 	}
-	(*head)->next->n /= (*head)->n;
+	twin->next->n /= twin->n;
 	delete_dnodeint_at_index(head, 0);
 }
 
@@ -85,13 +89,15 @@ void op_div(stack_t **head, unsigned int line_number)
  */
 void op_mul(stack_t **head, unsigned int line_number)
 {
-	if (*head == NULL || (*head)->next == NULL)
+	stack_t *twin = (*head)->next;
+
+	if (twin == NULL || twin->next == NULL)
 	{
 		fprintf(stderr, "L%u: can't mul, stack too short\n", line_number);
 		if (*head)
 			free_dlistint(*head);
 		exit(EXIT_FAILURE);
 	}
-	(*head)->next->n *= (*head)->n;
+	twin->next->n *= twin->n;
 	delete_dnodeint_at_index(head, 0);
 }

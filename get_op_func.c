@@ -27,3 +27,30 @@ void (*get_op_func(char *cmd))(stack_t **, unsigned int)
 	}
 	return (ops[a].f);
 }
+
+/**
+ * stack_init - initiliazes stack
+ * @head: head of stack
+ * Return: a values
+ */
+int stack_init(stack_t **head)
+{
+	stack_t *new;
+
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		if (*head)
+			free_dlistint(*head);
+		return (EXIT_FAILURE);
+	}
+
+	new->n = 0;
+	new->prev = NULL;
+	new->next = NULL;
+
+	*head = new;
+
+	return (EXIT_SUCCESS);
+}
