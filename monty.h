@@ -54,5 +54,6 @@ void op_nop(stack_t **head, unsigned int line_number);
 void op_sub(stack_t **head, unsigned int line_number);
 void op_div(stack_t **head, unsigned int line_number);
 void op_mul(stack_t **head, unsigned int line_number);
+void op_mod(stack_t **head, unsigned int line_number);
 int check_num(char *val);
 #endif
