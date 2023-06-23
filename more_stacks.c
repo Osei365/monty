@@ -92,3 +92,27 @@ void op_rotl(stack_t **head, unsigned int line_number)
 	}
 	first->n = num;
 }
+
+/**
+ * op_rotr - rotates the stack reverse
+ * @head: head of stack
+ * @line_number - line number
+ */
+void op_rotr(stack_t **head, unsigned int line_number)
+{
+	stack_t *bottom = *head;
+	int num;
+
+	(void)line_number;
+	if (bottom == NULL || bottom->next == NULL)
+		return;
+	while (bottom->next)
+		bottom = bottom->next;
+	num = bottom->n;
+	while (bottom->prev)
+	{
+		bottom->n = bottom->prev->n;
+		bottom = bottom->prev;
+	}
+	bottom->n = num;
+}

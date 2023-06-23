@@ -59,5 +59,6 @@ void op_mod(stack_t **head, unsigned int line_number);
 void op_pchar(stack_t **head, unsigned int line_number);
 void op_pstr(stack_t **head, unsigned int line_number);
 void op_rotl(stack_t **head, unsigned int line_number);
+void op_rotr(stack_t **head, unsigned int line_number);
 int check_num(char *val);
 #endif
