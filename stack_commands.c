@@ -62,7 +62,7 @@ void op_pint(stack_t **head, unsigned int line_number)
 }
 
 /**
- * op_pop - removes node from top
+ * op_pop - deletes node from top
  * @head: head of stack
  * @line_number: number to insert val
  */
