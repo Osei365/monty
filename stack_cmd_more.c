@@ -22,3 +22,15 @@ void op_add(stack_t **head, unsigned int line_number)
 	delete_dnodeint_at_index(head, 0);
 }
 
+/**
+ * op_nop - does nothing
+ * @head: head of stack
+ * @line_number: line number in stack
+ */
+void op_nop(stack_t **head, unsigned int line_number)
+{
+	(void)head;
+	(void)line_number;
+
+	;
+}
