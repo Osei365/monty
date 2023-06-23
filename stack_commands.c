@@ -91,7 +91,7 @@ void op_pop(stack_t **head, unsigned int line_number)
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	delete_dnodeint_at_index(head, 0);
+	delete_dnodeint_at_index(head, 1);
 }
 
 /**

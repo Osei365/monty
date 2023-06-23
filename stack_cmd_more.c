@@ -19,7 +19,7 @@ void op_add(stack_t **head, unsigned int line_number)
 	ptr = twin->next;
 	num = twin->n + ptr->n;
 	ptr->n = num;
-	delete_dnodeint_at_index(head, 0);
+	delete_dnodeint_at_index(head, 1);
 }
 
 /**
@@ -52,7 +52,7 @@ void op_sub(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	twin->next->n -= twin->n;
-	delete_dnodeint_at_index(head, 0);
+	delete_dnodeint_at_index(head, 1);
 }
 
 /**
@@ -79,7 +79,7 @@ void op_div(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	twin->next->n /= twin->n;
-	delete_dnodeint_at_index(head, 0);
+	delete_dnodeint_at_index(head, 1);
 }
 
 /**
@@ -99,5 +99,5 @@ void op_mul(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	twin->next->n *= twin->n;
-	delete_dnodeint_at_index(head, 0);
+	delete_dnodeint_at_index(head, 1);
 }
