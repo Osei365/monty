@@ -37,7 +37,7 @@ void op_pall(stack_t **head, unsigned int line_number)
 	(void)line_number;
 	while (twin)
 	{
-		printf("%d\n", twin->n);
+		fprintf(stdout, "%d\n", twin->n);
 		twin = twin->next;
 	}
 }
