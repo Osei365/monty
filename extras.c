@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- * check_num - checks if a str is int
+ * check_num - checks if a string is int
  * @val: value to evaluate
  * Return: 1 or 0
  */
