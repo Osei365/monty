@@ -22,6 +22,8 @@ void op_push(stack_t **head, unsigned int line_number)
 	}
 	if (flag == 0)
 		add_dnodeint(head, int_val);
+	else
+		add_dnodeint_end(head, int_val);
 }
 
 /**
